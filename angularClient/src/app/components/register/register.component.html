@@ -1,0 +1,86 @@
+<div class="container mt-3 w-25 p-5  shadow-lg rounded">
+  <h3 class="text-center">Registeration Form</h3>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-2">
+      <label for="firstname" class="form-label">FirstName</label>
+      <input type="text" class="form-control" placeholder="First Name" formControlName="firstname" id="firstname">
+      <div class="text-danger" *ngIf="!firstname?.valid && (firstname?.dirty ||firstname?.touched)">
+        <div [hidden]="!firstname.errors.required">
+          First Name is required
+        </div>
+        <div [hidden]="!firstname.errors.minlength">
+          Min Length is 4
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" placeholder="Email" formControlName="email" id="email">
+      <div class="text-danger" *ngIf="!email.valid && (email.dirty ||email.touched)">
+        <div [hidden]="!email.errors.required">
+          email is required
+        </div>
+        <div [hidden]="!email.errors.email">
+          invalid email id
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <label for="gender" class="form-label">Gender</label>
+      <br />
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="gender" id="gender" value="male" formControlName="gender">
+        <label class="form-check-label" for="gender">Male</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="gender" id="gender" value="female" formControlName="gender">
+        <label class="form-check-label" for="gender">Female</label>
+      </div>
+      <div class="text-danger" *ngIf="!gender.valid && (gender.dirty ||gender.touched)">
+        <div [hidden]="!gender.errors.required">
+          gender is required
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" placeholder="Password" formControlName="password" id="password">
+      <div class="text-danger" *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
+        <div [hidden]="!password.errors.required">
+          Password is required
+        </div>
+        <div [hidden]="!password.errors.minlength">
+          Min Length is 6
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <label for="mobile" class="form-label">Mobile No</label>
+      <input type="number" class="form-control" placeholder="mobile no" formControlName="mobile" id="mobile">
+      <div class="text-danger" *ngIf="!mobile?.valid && (mobile?.dirty ||mobile?.touched)">
+        <div [hidden]="!mobile.errors.required">
+          Mobile is required
+        </div>
+        <div [hidden]="!mobile.errors.pattern">
+          Please Enter 10 digit mobile no
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-primary btn-lg btn-block mb-2"
+        [disabled]="!registerForm.valid">Submit</button>
+    </div>
+
+  </form>
+
+  <!-- <h3>Form Value</h3>
+  {{registerForm.value |json}} -->
+
+</div>
