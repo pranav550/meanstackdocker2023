@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
+import { GlobalErrorComponent } from './components/global-error/global-error.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import { TokenInterceptorService } from './interceptors/token-interceptor.servic
     AddUserComponent,
     RegisterComponent,
     LoginComponent,
+    GlobalErrorComponent,
   ],
   imports: [
     BrowserModule,

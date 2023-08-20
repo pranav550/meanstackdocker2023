@@ -112,10 +112,10 @@ const loginUser = async (req, res) => {
         };
         res.status(200).send({ success: true, data: user_data });
       } else {
-        res.status(200).send({ success: false, message: "Invalid Login" });
+        res.status(401).send({ success: false, message: "Invalid Login" });
       }
     } else {
-      res.status(200).send({ success: false, message: "Invalid Login" });
+      res.status(401).send({ success: false, message: "Invalid Login" });
     }
   } catch (error) {
     res.status(400).send(error.message);

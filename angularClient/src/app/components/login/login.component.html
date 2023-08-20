@@ -1,78 +1,76 @@
-
 <div class="container mt-5 w-25 p-5  shadow-lg rounded">
-   
-    
-    <div class="mt-5">
-        <h3 class="text-center mt-5">Login Form</h3>
 
-    </div>
-    
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
-        <div class="mb-3 ">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control"  placeholder="Email" formControlName="email" id="email">
-            <div class="text-danger" *ngIf="!email.valid && (email.dirty ||email.touched)">
-                <div [hidden]="!email.errors.required">
-                  email is required
-                </div>
-                <div [hidden]="!email.errors.email">
-                  invalid email id
-                </div>
-              </div>
+
+  <div class="mt-5">
+    <h3 class="text-center mt-5">Login Form</h3>
+
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-3 ">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" placeholder="Email" formControlName="email" id="email">
+      <div class="text-danger" *ngIf="!email.valid && (email.dirty ||email.touched)">
+        <div [hidden]="!email.errors.required">
+          email is required
         </div>
-          
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control"  placeholder="Password" formControlName="password" id="password">
-            <div class="text-danger"
-      *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
-      <div [hidden]="!password.errors.required">
-        Password is required
-      </div>
-      <div [hidden]="!password.errors.minlength">
-        Min Length is 6
+        <div [hidden]="!email.errors.email">
+          invalid email id
+        </div>
       </div>
     </div>
-        </div>
-          
-        <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary btn-lg btn-block mb-5"  [disabled]="!loginForm.valid">Submit</button>
-        </div>
-        
-    </form>
 
-    <!-- <h3>Form Value</h3>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" placeholder="Password" formControlName="password" id="password">
+      <div class="text-danger" *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
+        <div [hidden]="!password.errors.required">
+          Password is required
+        </div>
+        <div [hidden]="!password.errors.minlength">
+          Min Length is 6
+        </div>
+      </div>
+    </div>
+
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-primary btn-lg btn-block mb-5" [disabled]="!loginForm.valid">Submit</button>
+    </div>
+
+  </form>
+
+  <!-- <h3>Form Value</h3>
     {{loginForm.value |json}} -->
 </div>
 
 
 
+<div class="container">
 
+  <div class="closePopup">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary d-none" id="hdeModal" data-bs-toggle="modal"
+      data-bs-target="#hideModal">
+      Launch demo modal
+    </button>
 
+    <!-- Modal -->
+    <div class="modal fade" id="hideModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Server Error</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h2>{{errorMsg}}</h2>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="shwModal" data-bs-dismiss="modal">Close</button>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

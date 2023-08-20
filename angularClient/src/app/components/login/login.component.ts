@@ -10,6 +10,7 @@ import { GlobalConstants } from 'src/app/common/GlobalContant';
 })
 export class LoginComponent {
   loginForm;
+  errorMsg: any = '';
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -36,16 +37,23 @@ export class LoginComponent {
   }
 
   loginCall(data: any) {
-    this.userService.login(data).subscribe((data: any) => {
-      console.log('response', data.data.token);
-      if (data.data['token']) {
-        console.log('response111', data);
-        GlobalConstants.isAuthenticated = true;
-        localStorage.setItem('userDetail', JSON.stringify(data.data));
-        localStorage.setItem('token', data.data['token']);
-        this.userService.userDetail(data.data);
-        this.router.navigateByUrl('/users', { state: data.data });
+    this.userService.login(data).subscribe(
+      (data1: any) => {
+        console.log('response', data1.data.token);
+        if (data1.data['token']) {
+          console.log('response111', data);
+          GlobalConstants.isAuthenticated = true;
+          localStorage.setItem('userDetail', JSON.stringify(data.data));
+          localStorage.setItem('token', data1.data['token']);
+          this.userService.userDetail(data1.data);
+          this.router.navigateByUrl('/users', { state: data1.data });
+        }
+      },
+      (err) => {
+        console.log('xxxxxxxxxxxxxxxxx2', err);
+        this.errorMsg = err;
+        document.getElementById('hdeModal')?.click();
       }
-    });
+    );
   }
 }

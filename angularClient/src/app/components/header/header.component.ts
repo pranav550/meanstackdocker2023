@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
     this.userService.logout();
     this.isAuthenticate = false;
     this.route.navigate(['/login']);
+    localStorage.removeItem('userDetail');
   }
 
   ngOnInit(): void {
@@ -39,7 +40,10 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateUser() {
-    if (Object.keys(this.userDetail).length > 0) {
+    if (
+      localStorage.getItem('userDetail') &&
+      Object.keys(this.userDetail).length > 0
+    ) {
       this.route.navigate(['/users']);
     } else {
       this.route.navigate(['/login']);

@@ -76,9 +76,11 @@ export class UsersComponent implements OnInit {
       .updateUser(data, this.selectedId)
       .subscribe((data: any) => {
         console.log('updated response', data);
+        this.userListing();
       });
     this.updateForm.reset();
     this.closeModal('editModal');
+    
   }
 
   editUser(id: any) {
@@ -101,9 +103,10 @@ export class UsersComponent implements OnInit {
   removedUser() {
     this.userService.deleteUser(this.selectedId).subscribe((data: any) => {
       console.log('delete response', data);
+       this.userListing();
     });
 
     this.closeModal('deleteModal');
-    this.userListing();
+   
   }
 }
